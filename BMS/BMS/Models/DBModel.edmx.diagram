@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37b8c8037ddf4fe0a7d4edffb0dd8761" Name="Diagram1">
+        <EntityTypeShape EntityType="BankManagementSystemModel.Account" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.AccountHolderType" Width="1.5" PointX="3.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Beneficiary" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Bill" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Branch" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.CreditCard" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.InterestRateType" Width="1.5" PointX="3.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Loan" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Notification" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Payment" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.SecurityQuestion" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.Transaction" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.TransactionStatu" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagementSystemModel.User" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Account__BranchI__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Account__HolderT__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Account__RateTyp__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Account__UserID__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Transacti__Sourc__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Beneficia__UserI__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Bill__UserID__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__CreditCar__UserI__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Payment__CreditC__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Loan__UserID__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Notificat__UserI__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Payment__UserID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__SecurityQ__UserI__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Transacti__Statu__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagementSystemModel.FK__Transacti__UserI__21B6055D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

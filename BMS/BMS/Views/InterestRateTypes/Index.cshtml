@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BMS.Models.InterestRateType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RateTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RateTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RateTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RateTypeID })
+        </td>
+    </tr>
+}
+
+</table>

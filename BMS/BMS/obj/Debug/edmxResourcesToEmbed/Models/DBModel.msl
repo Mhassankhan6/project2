@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BankManagementSystemModelStoreContainer" CdmEntityContainer="BankManagementSystemEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
+          <ScalarProperty Name="LastTransactionDate" ColumnName="LastTransactionDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="HolderTypeID" ColumnName="HolderTypeID" />
+          <ScalarProperty Name="RateTypeID" ColumnName="RateTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountHolderTypes">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.AccountHolderType">
+        <MappingFragment StoreEntitySet="AccountHolderType">
+          <ScalarProperty Name="HolderTypeID" ColumnName="HolderTypeID" />
+          <ScalarProperty Name="HolderTypeName" ColumnName="HolderTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Beneficiaries">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Beneficiary">
+        <MappingFragment StoreEntitySet="Beneficiary">
+          <ScalarProperty Name="BeneficiaryID" ColumnName="BeneficiaryID" />
+          <ScalarProperty Name="BeneficiaryName" ColumnName="BeneficiaryName" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="BillerName" ColumnName="BillerName" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCards">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.CreditCard">
+        <MappingFragment StoreEntitySet="CreditCard">
+          <ScalarProperty Name="CreditCardID" ColumnName="CreditCardID" />
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="CardholderName" ColumnName="CardholderName" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+          <ScalarProperty Name="AvailableCredit" ColumnName="AvailableCredit" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterestRateTypes">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.InterestRateType">
+        <MappingFragment StoreEntitySet="InterestRateType">
+          <ScalarProperty Name="RateTypeID" ColumnName="RateTypeID" />
+          <ScalarProperty Name="RateTypeName" ColumnName="RateTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loans">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Loan">
+        <MappingFragment StoreEntitySet="Loan">
+          <ScalarProperty Name="LoanID" ColumnName="LoanID" />
+          <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+          <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="LoanTerm" ColumnName="LoanTerm" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ReadStatus" ColumnName="ReadStatus" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreditCardID" ColumnName="CreditCardID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityQuestions">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.SecurityQuestion">
+        <MappingFragment StoreEntitySet="SecurityQuestion">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="SecurityQuestion1" ColumnName="SecurityQuestion" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SourceAccountNumber" ColumnName="SourceAccountNumber" />
+          <ScalarProperty Name="DestinationAccountNumber" ColumnName="DestinationAccountNumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionStatus">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.TransactionStatu">
+        <MappingFragment StoreEntitySet="TransactionStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BankManagementSystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,129 @@
+﻿@model BMS.Models.Account
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/Style/Index.css" rel="stylesheet" type="text/css" />
+
+<nav class="nav-bar">
+    <img src="~/Images/logo.svg" alt="" />
+    <div class="nav-items">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Transactions", "Create", "Transactions")</li>
+                <li>@Html.ActionLink("Beneficiary", "Create", "Beneficiaries")</li>
+                <li>@Html.ActionLink("Credit Card", "Create", "CreditCards")</li>
+                <li>@Html.ActionLink("Loan Application", "Create", "Loans")</li>
+                <li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>
+            </ul>
+        </div>
+    </div>
+    <button>
+        @Html.ActionLink("Create Account", "Create", "Users")
+    </button>
+</nav>
+
+<h2>Account Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOpened)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOpened)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastTransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastTransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.BranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.BranchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountHolderType.HolderTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountHolderType.HolderTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRateType.RateTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRateType.RateTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccountID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

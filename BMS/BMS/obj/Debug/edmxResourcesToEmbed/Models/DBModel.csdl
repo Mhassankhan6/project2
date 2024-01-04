@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccountBalance" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="InterestRate" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="AccountStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DateOpened" Type="DateTime" Precision="3" />
+    <Property Name="LastTransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="BranchID" Type="Int32" />
+    <Property Name="HolderTypeID" Type="Int32" />
+    <Property Name="RateTypeID" Type="Int32" />
+    <NavigationProperty Name="Branch" Relationship="Self.FK__Account__BranchI__1BFD2C07" FromRole="Account" ToRole="Branch" />
+    <NavigationProperty Name="AccountHolderType" Relationship="Self.FK__Account__HolderT__1CF15040" FromRole="Account" ToRole="AccountHolderType" />
+    <NavigationProperty Name="InterestRateType" Relationship="Self.FK__Account__RateTyp__1DE57479" FromRole="Account" ToRole="InterestRateType" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Account__UserID__1B0907CE" FromRole="Account" ToRole="User" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Sourc__20C1E124" FromRole="Account" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="AccountHolderType">
+    <Key>
+      <PropertyRef Name="HolderTypeID" />
+    </Key>
+    <Property Name="HolderTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HolderTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__HolderT__1CF15040" FromRole="AccountHolderType" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Beneficiary">
+    <Key>
+      <PropertyRef Name="BeneficiaryID" />
+    </Key>
+    <Property Name="BeneficiaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BeneficiaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Beneficia__UserI__25869641" FromRole="Beneficiary" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BillType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="DueDate" Type="DateTime" Precision="0" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Bill__UserID__286302EC" FromRole="Bill" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchID" />
+    </Key>
+    <Property Name="BranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__BranchI__1BFD2C07" FromRole="Branch" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="CreditCardID" />
+    </Key>
+    <Property Name="CreditCardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreditCardNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="CardholderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <Property Name="CVV" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="CreditLimit" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="AvailableCredit" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__CreditCar__UserI__2F10007B" FromRole="CreditCard" ToRole="User" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__CreditC__31EC6D26" FromRole="CreditCard" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="InterestRateType">
+    <Key>
+      <PropertyRef Name="RateTypeID" />
+    </Key>
+    <Property Name="RateTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RateTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__RateTyp__1DE57479" FromRole="InterestRateType" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Loan">
+    <Key>
+      <PropertyRef Name="LoanID" />
+    </Key>
+    <Property Name="LoanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoanType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LoanAmount" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="InterestRate" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="LoanTerm" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Loan__UserID__2B3F6F97" FromRole="Loan" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotificationType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ReadStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Notificat__UserI__38996AB5" FromRole="Notification" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreditCardID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="CreditCard" Relationship="Self.FK__Payment__CreditC__31EC6D26" FromRole="Payment" ToRole="CreditCard" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Payment__UserID__32E0915F" FromRole="Payment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityQuestion1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Answer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__SecurityQ__UserI__35BCFE0A" FromRole="SecurityQuestion" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SourceAccountNumber" Type="Int32" />
+    <Property Name="DestinationAccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Transacti__Sourc__20C1E124" FromRole="Transaction" ToRole="Account" />
+    <NavigationProperty Name="TransactionStatu" Relationship="Self.FK__Transacti__Statu__22AA2996" FromRole="Transaction" ToRole="TransactionStatus" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Transacti__UserI__21B6055D" FromRole="Transaction" ToRole="User" />
+  </EntityType>
+  <EntityType Name="TransactionStatu">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Statu__22AA2996" FromRole="TransactionStatus" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="0" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <Property Name="AccountStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__UserID__1B0907CE" FromRole="User" ToRole="Account" />
+    <NavigationProperty Name="Beneficiaries" Relationship="Self.FK__Beneficia__UserI__25869641" FromRole="User" ToRole="Beneficiary" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__UserID__286302EC" FromRole="User" ToRole="Bill" />
+    <NavigationProperty Name="CreditCards" Relationship="Self.FK__CreditCar__UserI__2F10007B" FromRole="User" ToRole="CreditCard" />
+    <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__UserID__2B3F6F97" FromRole="User" ToRole="Loan" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__UserI__38996AB5" FromRole="User" ToRole="Notification" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__UserID__32E0915F" FromRole="User" ToRole="Payment" />
+    <NavigationProperty Name="SecurityQuestions" Relationship="Self.FK__SecurityQ__UserI__35BCFE0A" FromRole="User" ToRole="SecurityQuestion" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__UserI__21B6055D" FromRole="User" ToRole="Transaction" />
+  </EntityType>
+  <Association Name="FK__Account__BranchI__1BFD2C07">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__HolderT__1CF15040">
+    <End Role="AccountHolderType" Type="Self.AccountHolderType" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountHolderType">
+        <PropertyRef Name="HolderTypeID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="HolderTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__RateTyp__1DE57479">
+    <End Role="InterestRateType" Type="Self.InterestRateType" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterestRateType">
+        <PropertyRef Name="RateTypeID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="RateTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__UserID__1B0907CE">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Sourc__20C1E124">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="SourceAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Beneficia__UserI__25869641">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Beneficiary" Type="Self.Beneficiary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Beneficiary">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__UserID__286302EC">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CreditCar__UserI__2F10007B">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__CreditC__31EC6D26">
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CreditCard">
+        <PropertyRef Name="CreditCardID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="CreditCardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan__UserID__2B3F6F97">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Loan">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__38996AB5">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__UserID__32E0915F">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SecurityQ__UserI__35BCFE0A">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SecurityQuestion">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Statu__22AA2996">
+    <End Role="TransactionStatus" Type="Self.TransactionStatu" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionStatus">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__UserI__21B6055D">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BankManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="AccountHolderTypes" EntityType="Self.AccountHolderType" />
+    <EntitySet Name="Beneficiaries" EntityType="Self.Beneficiary" />
+    <EntitySet Name="Bills" EntityType="Self.Bill" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="CreditCards" EntityType="Self.CreditCard" />
+    <EntitySet Name="InterestRateTypes" EntityType="Self.InterestRateType" />
+    <EntitySet Name="Loans" EntityType="Self.Loan" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="SecurityQuestions" EntityType="Self.SecurityQuestion" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatu" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Account__BranchI__1BFD2C07" Association="Self.FK__Account__BranchI__1BFD2C07">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__HolderT__1CF15040" Association="Self.FK__Account__HolderT__1CF15040">
+      <End Role="AccountHolderType" EntitySet="AccountHolderTypes" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__RateTyp__1DE57479" Association="Self.FK__Account__RateTyp__1DE57479">
+      <End Role="InterestRateType" EntitySet="InterestRateTypes" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__UserID__1B0907CE" Association="Self.FK__Account__UserID__1B0907CE">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Sourc__20C1E124" Association="Self.FK__Transacti__Sourc__20C1E124">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Beneficia__UserI__25869641" Association="Self.FK__Beneficia__UserI__25869641">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Beneficiary" EntitySet="Beneficiaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__UserID__286302EC" Association="Self.FK__Bill__UserID__286302EC">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CreditCar__UserI__2F10007B" Association="Self.FK__CreditCar__UserI__2F10007B">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CreditCard" EntitySet="CreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__CreditC__31EC6D26" Association="Self.FK__Payment__CreditC__31EC6D26">
+      <End Role="CreditCard" EntitySet="CreditCards" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan__UserID__2B3F6F97" Association="Self.FK__Loan__UserID__2B3F6F97">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Loan" EntitySet="Loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__38996AB5" Association="Self.FK__Notificat__UserI__38996AB5">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__UserID__32E0915F" Association="Self.FK__Payment__UserID__32E0915F">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SecurityQ__UserI__35BCFE0A" Association="Self.FK__SecurityQ__UserI__35BCFE0A">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Statu__22AA2996" Association="Self.FK__Transacti__Statu__22AA2996">
+      <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__UserI__21B6055D" Association="Self.FK__Transacti__UserI__21B6055D">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

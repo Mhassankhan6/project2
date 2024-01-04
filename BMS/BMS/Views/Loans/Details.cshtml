@@ -1,0 +1,74 @@
+﻿@model BMS.Models.Loan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanTerm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanTerm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BMS.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOpened)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastTransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Branch.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountHolderType.HolderTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterestRateType.RateTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InterestRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOpened)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastTransactionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Branch.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountHolderType.HolderTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InterestRateType.RateTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AccountID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AccountID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AccountID })
+        </td>
+    </tr>
+}
+
+</table>

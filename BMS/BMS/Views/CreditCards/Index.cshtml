@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BMS.Models.CreditCard>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditCardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardholderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvailableCredit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditCardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardholderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CVV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AvailableCredit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CreditCardID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CreditCardID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CreditCardID })
+        </td>
+    </tr>
+}
+
+</table>
